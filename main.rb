@@ -133,7 +133,7 @@ module Homebrew
     json = read_brew 'livecheck',
                      '--cask',
                      '--quiet',
-                    #  '--newer-only',
+                     '--newer-only',
                      '--full-name',
                      '--json',
                      *("--tap=#{tap}" if !tap.blank? && cask.blank?),
