@@ -28,7 +28,7 @@ The Action will extract all needed informations by itself, you just need to spec
 
 ```yaml
 - name: Update Homebrew cask
-  uses: macauley/action-homebrew-bump-cask
+  uses: macauley/action-homebrew-bump-cask@v1
   with:
     # Required, custom GitHub access token with the 'public_repo' and 'workflow' scopes
     token: ${{secrets.TOKEN}}
@@ -56,7 +56,7 @@ If there are no outdated casks, the Action will just exit.
 
 ```yaml
 - name: Update Homebrew cask
-  uses: macauley/action-homebrew-bump-cask
+  uses: macauley/action-homebrew-bump-cask@v1
   with:
     # Required, custom GitHub access token with only the 'public_repo' scope enabled
     token: ${{secrets.TOKEN}}
