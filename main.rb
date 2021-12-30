@@ -92,7 +92,6 @@ module Homebrew
     cask = tap + '/' + cask if !tap.blank? && !cask.blank?
 
     # Get info about cask
-    # FIXME
     stable = cask[cask].stable
     is_git = stable.downloader.is_a? GitDownloadStrategy
 
@@ -152,15 +151,6 @@ module Homebrew
       # Get info about cask
       cask = info['cask']
       version = info['version']['latest']
-
-      # Get stable software spec of the cask
-      stable = cask[cask].stable
-
-      # Check if cask is originating from PyPi
-      if !cask["pipgrip"].any_version_installed? && PyPI.update_pypi_url(stable.url, version)
-        # Install pipgrip utility so resources from PyPi get updated too
-        brew 'install', 'pipgrip'
-      end
 
       begin
         # Finally bump the cask
