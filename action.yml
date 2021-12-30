@@ -68,6 +68,10 @@ inputs:
       If cask input is specified - check one or more casks.
       If cask and tap inputs are specified - check one or more casks in that tap.
     required: false
+  dryrun:
+    description: Pass --dry-run to `brew bump-cask-pr`
+    required: false
+
 runs:
   using: composite
   steps:
@@ -85,3 +89,4 @@ runs:
         HOMEBREW_BUMP_REVISION: ${{inputs.revision}}
         HOMEBREW_BUMP_FORCE: ${{inputs.force}}
         HOMEBREW_BUMP_LIVECHECK: ${{inputs.livecheck}}
+        HOMEBREW_BUMP_DRYRUN: ${{inputs.dryrun}}

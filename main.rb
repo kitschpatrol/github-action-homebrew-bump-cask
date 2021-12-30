@@ -48,6 +48,7 @@ module Homebrew
   revision = ENV['HOMEBREW_BUMP_REVISION']
   force = ENV['HOMEBREW_BUMP_FORCE']
   livecheck = ENV['HOMEBREW_BUMP_LIVECHECK']
+  dryrun = ENV['HOMEBREW_BUMP_DRYRUN']
 
   # Check inputs
   if livecheck.false?
@@ -120,6 +121,7 @@ module Homebrew
          *("--tag=#{tag}" if is_git),
          *("--revision=#{revision}" if is_git),
          *('--force' unless force.false?),
+         *('--dry-run' unless dryrun.false?),
          cask
   else
     # Support multiple casks in input and change to full names if tap
@@ -169,6 +171,7 @@ module Homebrew
              "--version=#{version}",
              *("--fork-org=#{org}" unless org.blank?),
              *('--force' unless force.false?),
+             *('--dry-run' unless dryrun.false?),
              cask
       rescue ErrorDuringExecution => e
         # Continue execution on error, but save the exeception
