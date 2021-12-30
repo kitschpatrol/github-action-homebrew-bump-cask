@@ -75,5 +75,4 @@ If there are no outdated casks, the Action will just exit.
 If only `tap` input is provided, all casks in given tap will be checked and bumped if needed.
 
 ## Examples
-
-- TBD
+https://github.com/macauley/homebrew-bump-casks/blob/main/.github/workflows/bump-ham-casks.yml
