@@ -1,6 +1,6 @@
-name: Homebrew bump formula
-description: Bump (update) a Homebrew formula on new project release
-author: dawidd6
+name: Homebrew bump cask
+description: Bump (update) a Homebrew cask on new project release
+author: macauley
 branding:
   icon: arrow-up-circle
   color: yellow
@@ -18,23 +18,23 @@ inputs:
     required: false
   tap:
     description: |
-      Formula tap.
+      Cask tap.
 
-      In livecheck mode, if formula input is empty,
+      In livecheck mode, if cask input is empty,
       the Action will check the whole tap.
 
       Example: dawidd6/tap
       Example: dawidd6/homebrew-tap
     required: false
-  formula:
+  cask:
     description: |
-      Formula name.
+      Cask name.
 
-      In livecheck mode, this could take more than one formula,
+      In livecheck mode, this could take more than one cask,
       separated by commas or spaces or newlines.
 
-      Example: lazygit
-      Example (livecheck): lazygit, lazydocker, lazynpm
+      Example: macloggerdx
+      Example (livecheck): macloggerdx, wsjtx
     required: false
   tag:
     description: |
@@ -50,7 +50,7 @@ inputs:
     description: |
       Git revision.
 
-      Only required for formulae that use git to download the source.
+      Only required for cask that use git to download the source.
 
       It is determined automatically.
 
@@ -62,11 +62,11 @@ inputs:
     required: false
   livecheck:
     description: |
-      Use `brew livecheck` to determine outdated formulae.
+      Use `brew livecheck` to determine outdated casks.
 
-      If tap input is specified - check all formulae in this tap.
-      If formula input is specified - check one or more formulae.
-      If formula and tap inputs are specified - check one or more formulae in that tap.
+      If tap input is specified - check all cask in this tap.
+      If cask input is specified - check one or more casks.
+      If cask and tap inputs are specified - check one or more casks in that tap.
     required: false
 runs:
   using: composite
@@ -80,7 +80,7 @@ runs:
         HOMEBREW_BUMP_MESSAGE: ${{inputs.message}}
         HOMEBREW_BUMP_ORG: ${{inputs.org}}
         HOMEBREW_BUMP_TAP: ${{inputs.tap}}
-        HOMEBREW_BUMP_FORMULA: ${{inputs.formula}}
+        HOMEBREW_BUMP_CASK: ${{inputs.cask}}
         HOMEBREW_BUMP_TAG: ${{inputs.tag}}
         HOMEBREW_BUMP_REVISION: ${{inputs.revision}}
         HOMEBREW_BUMP_FORCE: ${{inputs.force}}
