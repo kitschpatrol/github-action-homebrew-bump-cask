@@ -57,22 +57,22 @@ module Homebrew
   end
 
   # Get user details
-  user = GitHub::API.open_rest "#{GitHub::API_URL}/user"
-  user_id = user['id']
-  user_login = user['login']
-  user_name = user['name'] || user['login']
-  user_email = user['email'] || (
+  user      	= GitHub::API.open_rest "#{GitHub::API_URL}/user"
+  user_id   	= user['id']
+  user_login	= user['login']
+  user_name 	= user['name'] || user['login']
+  user_email	= user['email'] || (
     # https://help.github.com/en/github/setting-up-and-managing-your-github-user-account/setting-your-commit-email-address
-    user_created_at = Date.parse user['created_at']
-    plus_after_date = Date.parse '2017-07-18'
-    need_plus_email = (user_created_at - plus_after_date).positive?
-    user_email = "#{user_login}@users.noreply.github.com"
-    user_email = "#{user_id}+#{user_email}" if need_plus_email
+    user_created_at	= Date.parse user['created_at']
+    plus_after_date	= Date.parse '2017-07-18'
+    need_plus_email	= (user_created_at - plus_after_date).positive?
+    user_email     	= "#{user_login}@users.noreply.github.com"
+    user_email     	= "#{user_id}+#{user_email}" if need_plus_email
     user_email
   )
 
   # Tell git who you are
-  git 'config', '--global', 'user.name', user_name
+  git 'config', '--global', 'user.name' , user_name
   git 'config', '--global', 'user.email', user_email
 
   # Tap the tap if desired
@@ -137,12 +137,13 @@ module Homebrew
     end
 
     # Get livecheck info
-    json = read_brew 'livecheck',
-                     '--cask',
-                     '--quiet',
-                     '--newer-only',
-                     '--full-name',
-                     '--json',
+    json = read_brew \
+      'livecheck',
+      '--cask',
+      '--quiet',
+      '--newer-only',
+      '--full-name',
+      '--json',
       *("--tap=#{tap_path}" if !tap_path.blank? && cask_full_name.blank?),
       *(cask_full_name      unless                 cask_full_name.blank?)
     json = JSON.parse json
@@ -166,9 +167,9 @@ module Homebrew
              '--no-browse',
              "--message=#{message}",
              "--version=#{version}",
-             *("--fork-org=#{org}" unless org.blank?),
-             *('--force' unless force.false?),
-             *('--dry-run' unless dryrun.false?),
+             *("--fork-org=#{org}"	unless org   .blank?),
+             *('--force'          	unless force .false?),
+             *('--dry-run'        	unless dryrun.false?),
              cask_name
       rescue ErrorDuringExecution => e
         # Continue execution on error, but save the exeception
