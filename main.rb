@@ -104,6 +104,8 @@ module Homebrew
     version    	= version_tag
     url_new    	= url_tag
 
+    exit(0) if version_tag == version_manifest # exit if no version update required
+
     # Check if cask is originating from PyPi
       # starts with PYTHONHOSTED_URL_PREFIX="https://files.pythonhosted.org/packages/"
     pypi_url = PyPI.update_pypi_url(url.to_s, version_tag)
