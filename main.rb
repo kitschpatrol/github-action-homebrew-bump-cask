@@ -92,8 +92,10 @@ module Homebrew
     cask_full_name = tap_path + '/' + cask_name if !tap_path.blank? && !cask_name.blank?
 
     # Get info about cask
-    stable = cask[cask].stable
-    is_git = stable.downloader.is_a? GitDownloadStrategy
+    myCask          	= Cask::CaskLoader::FromTapLoader.new(cask_full_name).load(config: nil)
+    version_manifest	= myCask.version # v1.0.0
+    url_old         	= myCask.url     # https://github.com/dev/app/releases/download/$version/app.zip
+    is_git          	= (url_old.using === :git)
 
     # Prepare tag and url
     tag        	= tag_path.delete_prefix 'refs/tags/' # 'refs/tags/v1.2.3' → 'v1.2.3'
