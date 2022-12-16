@@ -100,7 +100,7 @@ module Homebrew
     # Prepare tag and url
     tag        	= tag_path.delete_prefix 'refs/tags/' # 'refs/tags/v1.2.3' → 'v1.2.3'
     version_tag	= Version.parse tag
-    url_tag    	= url.to_s.gsub(version_manifest, version_tag)
+    url_tag    	= url_old.to_s.gsub(version_manifest, version_tag)
     version    	= version_tag
     url_new    	= url_tag
 
@@ -108,7 +108,7 @@ module Homebrew
 
     # Check if cask is originating from PyPi
       # starts with PYTHONHOSTED_URL_PREFIX="https://files.pythonhosted.org/packages/"
-    pypi_url = PyPI.update_pypi_url(url.to_s, version_tag)
+    pypi_url = PyPI.update_pypi_url(url_old.to_s, version_tag)
     if pypi_url
       url_new = pypi_url       	# Substitute url
       brew 'install', 'pipgrip'	# Install pipgrip utility so resources from PyPi get updated too
