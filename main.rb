@@ -112,7 +112,7 @@ module Homebrew
     version_tag	= Version.parse tag
     url_tag    	= url_old.to_s.gsub(version_manifest, version_tag)
     version    	= version_tag
-    url_new    	= url_tag
+    # url_new  	= url_tag # explicit urls override #{version} templates, so skip them
 
     exit(0) if version_tag == version_manifest # exit if no version update required
 
@@ -125,21 +125,21 @@ module Homebrew
     end
 
     brew 'bump-cask-pr', # Finally bump the cask
-      '--no-audit'            	                     	, # Don't run brew audit before opening the PR
-      '--no-browse'           	                     	, # Print the pull request URL instead of opening in a browser
-      "--message=#{message}"  	                     	, #
-      *("--fork-org=#{org}"   	unless org   .blank?)	, # Use the specified GitHub organization for forking
-      *("--version=#{version}"	)                    	, # Specify the new version for the cask
-      *("--url=#{url_new}"    	)                    	, # Specify the URL for the new download
-      *('--force'             	unless force .false?)	, # Ignore duplicate open PRs
-      *('--dry-run'           	unless dryrun.false?)	, # Print what would be done rather than doing it
+      '--no-audit'            	                      	, # Don't run brew audit before opening the PR
+      '--no-browse'           	                      	, # Print the pull request URL instead of opening in a browser
+      "--message=#{message}"  	                      	, #
+      *("--fork-org=#{org}"   	unless org    .blank?)	, # Use the specified GitHub organization for forking
+      *("--version=#{version}"	)                     	, # Specify the new version for the cask
+      *("--url=#{url_new}"    	unless url_new.blank?)	, # Specify the URL for the new download
+      *('--force'             	unless force  .false?)	, # Ignore duplicate open PRs
+      *('--dry-run'           	unless dryrun .false?)	, # Print what would be done rather than doing it
       cask_full_name
-      # tag/revisions not supported in casks
-      # *('--sha256=#{sha256}'    	if     sha)   	, # best effort to determine the SHA-256 will be made if the value is not supplied by the user
-      # *("--version=#{version}"  	unless is_git)	, # Specify the new version for the cask
-      # *("--url=#{url_new}"      	unless is_git)	, # Specify the URL for the new download
-      # *("--tag=#{tag}"          	if     is_git)	, # part of bump-formula-pr, not brew-cask-pr
-      # *("--revision=#{revision}"	if     is_git)	, # part of bump-formula-pr, not brew-cask-pr
+      # tag/revisions             	not supported in casks	  #
+      # *('--sha256=#{sha256}'    	if     sha)           	, # best effort to determine the SHA-256 will be made if the value is not supplied by the user
+      # *("--version=#{version}"  	unless is_git)        	, # Specify the new version for the cask
+      # *("--url=#{url_new}"      	unless is_git)        	, # Specify the URL for the new download
+      # *("--tag=#{tag}"          	if     is_git)        	, # part of bump-formula-pr, not brew-cask-pr
+      # *("--revision=#{revision}"	if     is_git)        	, # part of bump-formula-pr, not brew-cask-pr
   else
     # Support multiple casks in input and change to full names if tap
     cask_full_name = cask_name
