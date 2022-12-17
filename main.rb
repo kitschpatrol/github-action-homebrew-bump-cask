@@ -114,9 +114,7 @@ module Homebrew
       brew 'install', 'pipgrip'	# Install pipgrip utility so resources from PyPi get updated too
     end
 
-    # Finally bump the cask
-    brew \
-      'bump-cask-pr'          	                     	, #
+    brew 'bump-cask-pr', # Finally bump the cask
       '--no-audit'            	                     	, # Don't run brew audit before opening the PR
       '--no-browse'           	                     	, # Print the pull request URL instead of opening in a browser
       "--message=#{message}"  	                     	, #
@@ -164,17 +162,16 @@ module Homebrew
       cask_name = info['cask']
       version = info['version']['latest']
 
-      begin
-        # Finally bump the cask
+      begin # Finally bump the cask
         brew 'bump-cask-pr',
-             '--no-audit',
-             '--no-browse',
-             "--message=#{message}",
-             "--version=#{version}",
-             *("--fork-org=#{org}"	unless org   .blank?),
-             *('--force'          	unless force .false?),
-             *('--dry-run'        	unless dryrun.false?),
-             cask_name
+          '--no-audit',
+          '--no-browse',
+          "--message=#{message}",
+          "--version=#{version}",
+          *("--fork-org=#{org}"	unless org   .blank?),
+          *('--force'          	unless force .false?),
+          *('--dry-run'        	unless dryrun.false?),
+          cask_name
       rescue ErrorDuringExecution => e
         # Continue execution on error, but save the exeception
         err = e
