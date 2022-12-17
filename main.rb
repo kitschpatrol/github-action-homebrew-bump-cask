@@ -94,7 +94,7 @@ module Homebrew
             else
               message + "\n\n"
             end
-  message += '[`action-homebrew-bump-cask`](https://github.com/macauley/action-homebrew-bump-cask)'
+  message += '[`action-homebrew-bump-cask`](https://github.com/eugenesvk/action-homebrew-bump-cask)'
 
   # Do the livecheck stuff or not
   if livecheck.false?
