@@ -39,6 +39,16 @@ module Homebrew
     output
   end
 
+  def patch_brew # temporary patch to fix an issue with a lack of mandatory 'is:pr' tags for GitHub APIs
+    script_path = File.expand_path File.dirname(__FILE__)
+    patch_fd   = 'patch'
+    patch_name = 'utils-github.patch'
+    patch_path = "#{script_path}/#{patch_fd}/#{patch_name}"
+    repo_root  = ENV["HOMEBREW_REPOSITORY"]
+    safe_system 'git','apply','--unsafe-paths',"--directory=#{repo_root}","#{patch_path}"
+  end
+  patch_brew
+
   # Get inputs
   message  	= ENV['HOMEBREW_BUMP_MESSAGE']  	#
   org      	= ENV['HOMEBREW_BUMP_ORG']      	# 'orgName'
