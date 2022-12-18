@@ -63,3 +63,7 @@ If only `tap` input is provided, all casks in given tap will be checked and bump
 
 ## Examples
 https://github.com/eugenesvk/homebrew-bump/blob/main/.github/workflows/bump_homebrew_cask.yml
+
+## Known issues
+
+- `livecheck` mode in Homebrew fails to get the latest version is target repo's versioning scheme changed (e.g., `0.1.0` from today will be sorted as an older version than some `20201023201011-abcdefg` )
