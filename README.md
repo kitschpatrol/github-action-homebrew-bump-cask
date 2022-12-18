@@ -30,20 +30,13 @@ The Action will extract all needed informations by itself, you just need to spec
 - name: Update Homebrew cask
   uses: eugenesvk/action-homebrew-bump-cask@3.8.3
   with:
-    # Required, custom GitHub access token with the 'public_repo' and 'workflow' scopes
-    token: ${{secrets.TOKEN}}
-    # Optional, will create tap repo fork in organization
-    org: ORG
-    # Optional, defaults to homebrew/core
-    tap: USER/REPO
-    # Cask name, required
-    cask: CASK
-    # Optional, will be determined automatically
-    tag: ${{github.ref}}
-    # Optional, will be determined automatically
-    revision: ${{github.sha}}
-    # Optional, if don't want to check for already open PRs
-    force: false # true
+    token   	: ${{secrets.TOKEN}}	# Required, custom GitHub access token with the 'public_repo' and 'workflow' scopes
+    cask    	: CASK              	# Required  Cask name
+    tap     	: USER/REPO         	# Optional, defaults to homebrew/core
+    org     	: ORG               	# Optional, will create tap repo fork in organization
+    tag     	: ${{github.ref}}   	# Optional, will be determined automatically
+    revision	: ${{github.sha}}   	# Optional, will be determined automatically
+    force   	: false             	# Optional, if don't want to check for already open PRs
 ```
 
 ### Livecheck mode
@@ -58,18 +51,12 @@ If there are no outdated casks, the Action will just exit.
 - name: Update Homebrew cask
   uses: eugenesvk/action-homebrew-bump-cask@3.8.3
   with:
-    # Required, custom GitHub access token with only the 'public_repo' scope enabled
-    token: ${{secrets.TOKEN}}
-    # Optional, will create tap repo fork in organization
-    org: ORG
-    # Bump all outdated casks in this tap
-    tap: USER/REPO
-    # Bump only these casks if outdated
-    cask: CASK-1, CASK-2, CASK-3, ...
-    # Optional, if don't want to check for already open PRs
-    force: false # true
-    # Need to set this input if want to use `brew livecheck`
-    livecheck: true
+    token    	: ${{secrets.TOKEN}}         	# Required, custom GitHub access token with only the 'public_repo' scope enabled
+    cask     	: CASK-1, CASK-2, CASK-3, ...	# Bump only these casks if outdated
+    tap      	: USER/REPO                  	# Bump all outdated casks in this tap
+    org      	: ORG                        	# Optional, will create tap repo fork in organization
+    force    	: false                      	# Optional, if don't want to check for already open PRs
+    livecheck	: true                       	# Need to set this input if want to use `brew livecheck`
 ```
 
 If only `tap` input is provided, all casks in given tap will be checked and bumped if needed.
