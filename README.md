@@ -28,7 +28,7 @@ The Action will extract all needed informations by itself, you just need to spec
 
 ```yaml
 - name: Update Homebrew cask
-  uses: macauley/action-homebrew-bump-cask@v1
+  uses: eugenesvk/action-homebrew-bump-cask@3.8.3
   with:
     # Required, custom GitHub access token with the 'public_repo' and 'workflow' scopes
     token: ${{secrets.TOKEN}}
@@ -56,7 +56,7 @@ If there are no outdated casks, the Action will just exit.
 
 ```yaml
 - name: Update Homebrew cask
-  uses: macauley/action-homebrew-bump-cask@v1
+  uses: eugenesvk/action-homebrew-bump-cask@3.8.3
   with:
     # Required, custom GitHub access token with only the 'public_repo' scope enabled
     token: ${{secrets.TOKEN}}
@@ -75,4 +75,4 @@ If there are no outdated casks, the Action will just exit.
 If only `tap` input is provided, all casks in given tap will be checked and bumped if needed.
 
 ## Examples
-https://github.com/macauley/homebrew-bump-casks/blob/main/.github/workflows/bump-ham-casks.yml
+https://github.com/eugenesvk/homebrew-bump/blob/main/.github/workflows/bump_homebrew_cask.yml
