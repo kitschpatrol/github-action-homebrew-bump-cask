@@ -35,19 +35,13 @@ module Homebrew
   def read_brew(*args)
     print_command ENV["HOMEBREW_BREW_FILE"], *args
     output = `#{ENV["HOMEBREW_BREW_FILE"]} #{args.join(' ')}`.chomp
-    odie output if $CHILD_STATUS.exitstatus != 0
+    puts "[status]#{$CHILD_STATUS.exitstatus}"
+    puts "[output]#{output}"
+    # TODO
+    # brew livecheck returning 1 in CI despite returning 0 locally?
+    # odie output if $CHILD_STATUS.exitstatus != 0
     output
   end
-
-  # def patch_brew # temporary patch to fix an issue with a lack of mandatory 'is:pr' tags for GitHub APIs
-    # script_path = File.expand_path File.dirname(__FILE__)
-    # patch_fd   = 'patch'
-    # patch_name = 'utils-github.patch'
-    # patch_path = "#{script_path}/#{patch_fd}/#{patch_name}"
-    # repo_root  = ENV["HOMEBREW_REPOSITORY"]
-    # safe_system 'git','apply','--unsafe-paths',"--directory=#{repo_root}","#{patch_path}"
-  # end
-  # patch_brew
 
   # Get inputs
   message  	= ENV['HOMEBREW_BUMP_MESSAGE']  	#
@@ -172,6 +166,8 @@ module Homebrew
       cask_name = info['cask']
       version = info['version']['latest']
 
+      puts "Processing cask: #{cask_name}, version: #{version}" # Log processing details
+
       begin # Finally bump the cask
         brew 'bump-cask-pr',
           '--no-audit',
@@ -183,12 +179,14 @@ module Homebrew
           *('--dry-run'        	unless dryrun.false?),
           cask_name
       rescue ErrorDuringExecution => e
-        # Continue execution on error, but save the exeception
+        # Log the error details
+        puts "Error during bump-cask-pr for #{cask_name}: #{e.message}"
+        # Continue execution on error, but save the exception
         err = e
       end
     end
 
-    # Die if error occured
+    # Die if error occurred
     odie err if err
   end
 end
