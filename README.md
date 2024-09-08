@@ -1,5 +1,7 @@
 Fork of [macauley/action-homebrew-bump-cask/forks](https://github.com/macauley/action-homebrew-bump-cask/forks) merging some fixes from [other forks](https://github.com/macauley/action-homebrew-bump-cask/forks).
 
+The `package.json` is included simply to track metadata.
+
 Original readme below:
 
 ---
@@ -28,7 +30,7 @@ Listen for new tags in workflow:
 on:
   push:
     tags:
-      - "*"
+      - '*'
 ```
 
 The Action will extract all needed informations by itself, you just need to specify the following step in your workflow:

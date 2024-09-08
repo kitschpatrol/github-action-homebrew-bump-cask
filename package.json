@@ -1,0 +1,31 @@
+{
+	"name": "github-action-homebrew-bump-cask",
+	"type": "module",
+	"description": "A GitHub Action to easily bump Homebrew cask on new release.",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/kitschpatrol/github-action-homebrew-bump-cask.git"
+	},
+	"homepage": "https://github.com/kitschpatrol/github-action-homebrew-bump-cask",
+	"license": "MIT",
+	"private": true,
+	"packageManager": "pnpm@9.9.0",
+	"engines": {
+		"node": ">=22.0.0",
+		"pnpm": ">=9.0.0"
+	},
+	"keywords": [
+		"github-action",
+		"action",
+		"cask",
+		"homebrew"
+	],
+	"scripts": {
+		"fix": "pnpm prettier-config --fix",
+		"lint": "pnpm prettier-config --check",
+		"updatetag": "git tag -d v3 && git push origin :v3 && git tag -a v3 -m '' && git push origin v3"
+	},
+	"devDependencies": {
+		"@kitschpatrol/prettier-config": "^4.7.5"
+	}
+}
