@@ -8,6 +8,12 @@ inputs:
   token:
     description: GitHub token (not the default one)
     required: true
+  user_name:
+    description: Git user name to commit by.
+    required: false
+  user_email:
+    description: Git user email to commit by.
+    required: false
   message:
     description: |
       Additional message to append to created PR.
@@ -15,6 +21,10 @@ inputs:
   org:
     description: |
       Fork tap repository to selected GitHub organization.
+    required: false
+  no_fork:
+    description: |
+      Use the origin repository instead of forking.
     required: false
   tap:
     description: |
@@ -76,6 +86,9 @@ runs:
   using: composite
   steps:
     - run: echo /home/linuxbrew/.linuxbrew/bin >> $GITHUB_PATH
+      if: ${{runner.os == 'Linux'}}
+      shell: sh
+    - run: brew developer on
       shell: sh
     - run: brew update-reset
       shell: sh
@@ -83,10 +96,13 @@ runs:
       shell: sh
       env:
         HOMEBREW_GITHUB_API_TOKEN: ${{inputs.token}}
+        HOMEBREW_GIT_NAME: ${{inputs.user_name}}
+        HOMEBREW_GIT_EMAIL: ${{inputs.user_email}}
         HOMEBREW_BUMP_MESSAGE: ${{inputs.message}}
         HOMEBREW_BUMP_ORG: ${{inputs.org}}
         HOMEBREW_BUMP_TAP: ${{inputs.tap}}
         HOMEBREW_BUMP_CASK: ${{inputs.cask}}
+        HOMEBREW_BUMP_NO_FORK: ${{inputs.no_fork}}
         HOMEBREW_BUMP_TAG: ${{inputs.tag}}
         HOMEBREW_BUMP_REVISION: ${{inputs.revision}}
         HOMEBREW_BUMP_FORCE: ${{inputs.force}}
