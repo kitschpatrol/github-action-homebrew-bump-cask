@@ -1,4 +1,5 @@
 {
+	"version": "3.8.6",
 	"name": "github-action-homebrew-bump-cask",
 	"private": true,
 	"description": "A GitHub Action to easily bump Homebrew cask on new release.",
