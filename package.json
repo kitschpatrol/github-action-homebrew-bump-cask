@@ -1,6 +1,6 @@
 {
-	"version": "3.8.6",
 	"name": "github-action-homebrew-bump-cask",
+	"version": "3.8.6",
 	"private": true,
 	"description": "A GitHub Action to easily bump Homebrew cask on new release.",
 	"keywords": [
@@ -23,11 +23,11 @@
 		"updatetag": "git tag -d v3 && git push origin :v3 && git tag -a v3 -m '' && git push origin v3"
 	},
 	"devDependencies": {
-		"@kitschpatrol/prettier-config": "^5.8.1"
+		"@kitschpatrol/prettier-config": "^5.10.0"
 	},
-	"packageManager": "pnpm@10.20.0",
+	"packageManager": "pnpm@10.25.0",
 	"engines": {
 		"node": ">=22.0.0",
-		"pnpm": ">=9.0.0"
+		"pnpm": ">=10.0.0"
 	}
 }
