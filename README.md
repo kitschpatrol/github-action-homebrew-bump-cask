@@ -1,6 +1,6 @@
 Fork of [macauley/action-homebrew-bump-cask/forks](https://github.com/macauley/action-homebrew-bump-cask/forks) merging some fixes from [other forks](https://github.com/macauley/action-homebrew-bump-cask/forks).
 
-The `package.json` is included simply to track metadata.
+The `package.json` is included simply to track metadata and run scripts.
 
 Original readme below:
 
