@@ -67,9 +67,6 @@ inputs:
       Example: 130d3a3af72f66780ae4e24cd143ae7a4d757f9d
     required: false
     default: ${{github.sha}}
-  force:
-    description: Check open PRs or not (will fail if detected)
-    required: false
   livecheck:
     description: |
       Use `brew livecheck` to determine outdated casks.
@@ -105,6 +102,5 @@ runs:
         HOMEBREW_BUMP_NO_FORK: ${{inputs.no_fork}}
         HOMEBREW_BUMP_TAG: ${{inputs.tag}}
         HOMEBREW_BUMP_REVISION: ${{inputs.revision}}
-        HOMEBREW_BUMP_FORCE: ${{inputs.force}}
         HOMEBREW_BUMP_LIVECHECK: ${{inputs.livecheck}}
         HOMEBREW_BUMP_DRYRUN: ${{inputs.dryrun}}

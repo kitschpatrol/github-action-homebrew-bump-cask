@@ -53,7 +53,6 @@ module Homebrew
   cask_name 	= ENV['HOMEBREW_BUMP_CASK']     	# 'caskName'
   tag_path  	= ENV['HOMEBREW_BUMP_TAG']      	# 'refs/tags/v1.2.3'
   revision  	= ENV['HOMEBREW_BUMP_REVISION'] 	#
-  force     	= ENV['HOMEBREW_BUMP_FORCE']    	#
   livecheck 	= ENV['HOMEBREW_BUMP_LIVECHECK']	#
   dryrun    	= ENV['HOMEBREW_BUMP_DRYRUN']   	#
 
@@ -101,11 +100,6 @@ module Homebrew
             end
   message += '[`action-homebrew-bump-cask`](https://github.com/eugenesvk/action-homebrew-bump-cask)'
 
-  unless force.false?
-    brew_repo = read_brew '--repository'
-    git '-C', brew_repo, 'apply', "#{__dir__}/bump-formula-pr.rb.patch"
-  end
-
   # Do the livecheck stuff or not
   if livecheck.false?
     # Change cask name to full name: 'caskName' → 'userName/tapName/caskName'
@@ -127,11 +121,11 @@ module Homebrew
     brew 'bump-cask-pr', # Finally bump the cask
       '--no-audit'            	                      	, # Don't run brew audit before opening the PR
       '--no-browse'           	                      	, # Print the pull request URL instead of opening in a browser
+      '--no-style'            	                      	, # Don't run brew style --fix (avoids RuboCop infinite loops)
       "--message=#{message}"  	                      	, #
       *("--fork-org=#{org}"   	unless org    .blank?)	, # Use the specified GitHub organization for forking
       *("--no-fork"           	unless no_fork.false?)	, #
       *("--version=#{version}"	)                     	, # Specify the new version for the cask
-      *('--force'             	unless force  .false?)	, # Ignore duplicate open PRs
       *('--dry-run'           	unless dryrun .false?)	, # Print what would be done rather than doing it
       cask_full_name
       # tag/revisions             	not supported in casks	  #
@@ -179,11 +173,11 @@ module Homebrew
         brew 'bump-cask-pr',
           '--no-audit',
           '--no-browse',
+          '--no-style',
           "--message=#{message}",
           "--version=#{version}",
           *("--fork-org=#{org}"	unless org   .blank?),
           *("--no-fork"        	unless no_fork.false?),
-          *('--force'          	unless force .false?),
           *('--dry-run'        	unless dryrun.false?),
           cask_name
       rescue ErrorDuringExecution => e
