@@ -1,8 +1,7 @@
 {
 	"name": "github-action-homebrew-bump-cask",
-	"version": "3.8.6",
+	"version": "3.8.7",
 	"private": true,
-	"sideEffects": false,
 	"description": "A GitHub Action to easily bump Homebrew cask on new release.",
 	"keywords": [
 		"github-action",
@@ -16,6 +15,7 @@
 		"url": "git+https://github.com/kitschpatrol/github-action-homebrew-bump-cask.git"
 	},
 	"license": "MIT",
+	"sideEffects": false,
 	"type": "module",
 	"scripts": {
 		"clean": "git rm -f pnpm-lock.yaml ; git clean -fdX",
