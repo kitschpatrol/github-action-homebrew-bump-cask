@@ -1,0 +1,3 @@
+upstreams:
+  - repo: eugenesvk/action-homebrew-bump-cask.git
+    branch: master

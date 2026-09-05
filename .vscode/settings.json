@@ -22,7 +22,7 @@
 		".env": ".env.*, .template.env",
 		"*.js": "${basename}.ts.map, ${basename}.js.map, ${basename}.d.ts, ${basename}.d.ts.map, ${basename}.d.js.map",
 		"*.ts": "${basename}.ts.map, ${basename}.d.ts, ${basename}.d.ts.map",
-		"package.json": ".*.cjs, .*.cts, .*.js, .*.json, .*.json5, .*.jsonc, .*.mjs, .*.mts, .*.toml, .*.ts, .*.yaml, .*.yml, .*ignore, .*rc, .node-version, *config.cjs, *config.cts, *config.js, *config.json, *config.json5, *config.jsonc, *config.mjs, *config.mts, *config.toml, *config.ts, *config.yaml, *config.yml, tsconfig.*.json, lerna.json, netlify.toml, package-lock.json, pnpm*, skills-lock.json, turbo.json, vercel.json, workspace*, wrangler.toml, wrangler.json, wrangler.jsonc, yarn.lock, yarn*",
+		"package.json": ".*.cjs, .*.cts, .*.js, .*.json, .*.json5, .*.jsonc, .*.mjs, .*.mts, .*.toml, .*.ts, .*.yaml, .*.yml, .*attributes, .*ignore, .*rc, .node-version, *config.cjs, *config.cts, *config.js, *config.json, *config.json5, *config.jsonc, *config.mjs, *config.mts, *config.toml, *config.ts, *config.yaml, *config.yml, tsconfig.*.json, electron-builder.ts, audit.json, lerna.json, lychee.toml, netlify.toml, .node-version, package-lock.json, pnpm*, skills-lock.json, turbo.json, vercel.json, workspace*, wrangler.toml, wrangler.json, wrangler.jsonc, yarn.lock, yarn*",
 		"readme.md": "authors*, backers*, changelog*, citation*, code_of_conduct*, contributing*, contributors*, copying*, credits*, governance*, history*, license*, maintainers*, release_notes*, security*, sponsors*"
 	},
 	"prettier.documentSelectors": [
@@ -34,5 +34,37 @@
 		"**/*.rb",
 		"**/*.svelte"
 	],
-	"prettier.enable": true
+	"prettier.enable": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.ts": "explicit",
+		"source.fixAll.eslint": "explicit",
+		"source.organizeImports": "never",
+		"source.fixAll.stylelint": "explicit"
+	},
+	"js/ts.tsdk.path": "node_modules/typescript/lib",
+	"js/ts.tsdk.promptToUseWorkspaceVersion": true,
+	"eslint.enable": true,
+	"eslint.runtime": "node",
+	"eslint.useFlatConfig": true,
+	"eslint.validate": [
+		"astro",
+		"html",
+		"javascript",
+		"javascriptreact",
+		"json",
+		"json5",
+		"jsonc",
+		"markdown",
+		"mdx",
+		"svelte",
+		"toml",
+		"typescript",
+		"typescriptreact",
+		"xml",
+		"yaml"
+	],
+	"stylelint.enable": true,
+	"stylelint.validate": ["css", "html", "svelte", "astro"],
+	"cSpell.enabled": true,
+	"cSpell.workspaceRootPath": "."
 }
