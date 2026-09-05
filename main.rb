@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'cask'
+require 'system_command'
 
 class Object
   def false?
@@ -24,12 +25,12 @@ module Homebrew
 
   def brew(*args)
     print_command ENV["HOMEBREW_BREW_FILE"], *args
-    safe_system ENV["HOMEBREW_BREW_FILE"], *args
+    SystemCommand.safe_system ENV["HOMEBREW_BREW_FILE"], *args
   end
 
   def git(*args)
     print_command ENV["HOMEBREW_GIT"], *args
-    safe_system ENV["HOMEBREW_GIT"], *args
+    SystemCommand.safe_system ENV["HOMEBREW_GIT"], *args
   end
 
   def read_brew(*args)
