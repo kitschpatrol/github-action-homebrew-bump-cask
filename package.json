@@ -31,7 +31,7 @@
 	"sideEffects": false,
 	"type": "module",
 	"scripts": {
-		"clean": "shx rm -f pnpm-lock.yaml && git clean -fdX -e !.claude/",
+		"clean-deep": "shx rm -f pnpm-lock.yaml && git clean -fdX -e !.claude/",
 		"fix": "ksc-prettier fix",
 		"lint": "ksc-prettier lint",
 		"release": "bumpp --commit 'Release: %s' && ./scripts/sync-major-tag.sh"
