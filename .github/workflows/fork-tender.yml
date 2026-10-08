@@ -24,7 +24,7 @@ jobs:
           fetch-depth: 0 # required: merges need full history
           persist-credentials: false
 
-      - uses: kitschpatrol/github-action-fork-tender@v1
+      - uses: kitschpatrol/github-action-fork-tender@c5e93b11c20b3b7c66612c7419971d6270591cd1 # v1.0.2
         env:
           # Bill your Claude subscription (token from `claude setup-token`):
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}

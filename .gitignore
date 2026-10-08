@@ -1,13 +1,21 @@
 # Git Ignore
-# Also used by CSpell and Stylelint
+# Also used by CSpell, Stylelint, and ESLint
 
 # @kitschpatrol/repo-config boilerplate
+!.env.example
+.agents/
 .astro/
+.claude/
 .DS_Store
 .env
 .env.*
-!.env.example
+.eslint-config-inspector
+.netlify/
+.pnpm-store/
 .svelte-kit/
+.vitest/
+.worktrees/
+.wrangler/
 {tmp,temp}/
 **/*.min.js
 /scratch/
@@ -16,6 +24,7 @@ build/
 coverage/
 dist/
 node_modules/
+skills-lock.json
 vendor/
 
 # Customizations

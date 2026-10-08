@@ -2,7 +2,7 @@
 	"name": "github-action-homebrew-bump-cask",
 	"version": "3.8.9",
 	"private": true,
-	"description": "A GitHub Action to easily bump Homebrew cask on new release.",
+	"description": "GitHub Action to easily bump Homebrew cask on new release.",
 	"keywords": [
 		"github-action",
 		"action",
@@ -37,11 +37,11 @@
 		"release": "bumpp --commit 'Release: %s' && ./scripts/sync-major-tag.sh"
 	},
 	"devDependencies": {
-		"@kitschpatrol/prettier-config": "^8.7.0",
-		"bumpp": "^12.2.2",
+		"@kitschpatrol/prettier-config": "^8.13.1",
+		"bumpp": "^12.3.0",
 		"shx": "^0.4.0"
 	},
-	"packageManager": "pnpm@11.24.0",
+	"packageManager": "pnpm@12.10.1",
 	"engines": {
 		"node": ">=22.0.0"
 	}
