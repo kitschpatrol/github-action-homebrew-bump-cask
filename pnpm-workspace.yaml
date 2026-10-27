@@ -1,5 +1,3 @@
-minimumReleaseAgeExclude:
-  - '@kitschpatrol/prettier-config@8.13.1'
 publicHoistPattern:
   - '@kitschpatrol/repo-config'
   - '@kitschpatrol/typescript-config'
