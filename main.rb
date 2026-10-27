@@ -2,6 +2,7 @@
 
 require 'cask'
 require 'system_command'
+require 'utils/github'
 
 class Object
   def false?
@@ -169,6 +170,16 @@ module Homebrew
       version = info['version']['latest']
 
       puts "Processing cask: #{cask_name}, version: #{version}" # Log processing details
+
+      # Skip if a bump PR for this version is already open, since `brew bump-cask-pr`
+      # only warns about duplicates in non-official taps and then fails to push
+      # over the existing PR's branch
+      cask = Cask::CaskLoader.load(cask_name)
+      open_prs = GitHub.fetch_pull_requests(cask.token, cask.tap.remote_repository, state: 'open', version: version)
+      unless open_prs.empty?
+        puts "Skipping #{cask_name}, open pull request exists: #{open_prs.map { |pr| pr['html_url'] }.join(' ')}"
+        next
+      end
 
       begin # Finally bump the cask
         brew 'bump-cask-pr',
