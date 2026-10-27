@@ -1,3 +1,10 @@
+<!-- badges({ githubRelease: true }) -->
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/license/mit)
+[![GitHub Release](https://img.shields.io/github/v/release/kitschpatrol/github-action-homebrew-bump-cask?label=Release)](https://github.com/kitschpatrol/github-action-homebrew-bump-cask/releases/latest)
+
+<!-- /badges -->
+
 Fork of [macauley/action-homebrew-bump-cask/forks](https://github.com/macauley/action-homebrew-bump-cask/forks) merging some fixes from [other forks](https://github.com/macauley/action-homebrew-bump-cask/forks).
 
 The `package.json` is included simply to track metadata and run scripts.
@@ -8,7 +15,7 @@ Original readme below:
 
 # Homebrew bump cask GitHub Action
 
-_This action was adapted from https://github.com/dawidd6/action-homebrew-bump-formula to work for casks rather than formula_
+_This action was adapted from <https://github.com/dawidd6/action-homebrew-bump-formula> to work for casks rather than formula_
 
 An action that wraps `brew bump-cask-pr` to ease the process of updating the cask on new project releases.
 
@@ -79,7 +86,7 @@ If only `tap` input is provided, all casks in given tap will be checked and bump
 
 ## Examples
 
-https://github.com/eugenesvk/homebrew-bump/blob/main/.github/workflows/bump_homebrew_cask.yml
+<https://github.com/eugenesvk/homebrew-bump/blob/main/.github/workflows/bump_homebrew_cask.yml>
 
 ## Known issues
 
