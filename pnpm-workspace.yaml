@@ -1,3 +1,8 @@
+minimumReleaseAgeExclude:
+  - '@kitschpatrol/mdat-config@8.14.0'
+  - '@kitschpatrol/prettier-config@8.14.0'
+  - mdat@3.6.6
+  - remark-mdat@3.1.2
 publicHoistPattern:
   - '@kitschpatrol/repo-config'
   - '@kitschpatrol/typescript-config'
