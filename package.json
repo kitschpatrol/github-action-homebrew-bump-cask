@@ -34,9 +34,10 @@
 		"clean-deep": "shx rm -f pnpm-lock.yaml && git clean -fdX",
 		"fix": "ksc-mdat fix && ksc-prettier fix",
 		"lint": "ksc-mdat lint && ksc-prettier lint",
-		"release": "bumpp --commit 'Release: %s' && ./scripts/sync-major-tag.sh"
+		"release": "bumpp --commit 'Release: %s' --all --execute 'chagent' && ./scripts/sync-major-tag.sh"
 	},
 	"devDependencies": {
+		"@kitschpatrol/chagent": "0.4.0",
 		"@kitschpatrol/mdat-config": "^8.14.0",
 		"@kitschpatrol/prettier-config": "^8.14.0",
 		"bumpp": "^12.3.0",

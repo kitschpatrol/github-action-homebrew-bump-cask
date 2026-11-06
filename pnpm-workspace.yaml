@@ -1,4 +1,5 @@
 minimumReleaseAgeExclude:
+  - '@kitschpatrol/chagent@0.4.0'
   - '@kitschpatrol/mdat-config@8.14.0'
   - '@kitschpatrol/prettier-config@8.14.0'
   - mdat@3.6.6
