@@ -167,8 +167,8 @@ importers:
   .:
     devDependencies:
       '@kitschpatrol/chagent':
-        specifier: 0.4.0
-        version: 0.4.0(bumpp@12.3.0)
+        specifier: ^0.5.0
+        version: 0.5.0(bumpp@12.3.0)
       '@kitschpatrol/mdat-config':
         specifier: ^8.14.0
         version: 8.14.0(@types/node@24.13.6)(supports-color@9.4.0)(typescript@7.0.2)
@@ -306,8 +306,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@kitschpatrol/chagent@0.4.0':
-    resolution: {integrity: sha512-qOH2lhy5M04LE47WuXbi/N9bTeKXA4ZgGHGDm3z6iutCMk7m//M7/mjibiwRDBa/wiV9bqrRhq7Nj3iY4Jaqdg==}
+  '@kitschpatrol/chagent@0.5.0':
+    resolution: {integrity: sha512-4copTTywIMv8xHocq8ej4QiIqLw7/SXN6Ou4KROhegAX9b4Izin99iLWBBLT2QX7Q0okN0zVSCCH0JdcARmhFQ==}
     engines: {node: ^24.16.0 || >=26.3.0}
     hasBin: true
     peerDependencies:
@@ -2481,7 +2481,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.6.0
 
-  '@kitschpatrol/chagent@0.4.0(bumpp@12.3.0)':
+  '@kitschpatrol/chagent@0.5.0(bumpp@12.3.0)':
     dependencies:
       '@clack/prompts': 1.8.1
       '@types/node': 24.13.6
